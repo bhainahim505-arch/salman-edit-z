@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "SALMAN EDIT-Z"
+version = "1.0.0"
+id = "artifacts/salman-edit-z"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 24462
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/salman-edit-z run dev"
+
+[services.env]
+PORT = "24462"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/salman-edit-z", "run", "build"]
+publicDir = "artifacts/salman-edit-z/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

@@ -1,0 +1,101 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background with rounded corners -->
+  <rect width="512" height="512" rx="96" fill="#060606"/>
+  <rect width="512" height="512" rx="96" fill="url(#bgGrad)" opacity="0.6"/>
+
+  <!-- Fire glow behind Z -->
+  <ellipse cx="256" cy="340" rx="120" ry="80" fill="url(#fireGlow)" opacity="0.7"/>
+
+  <!-- Bold Gold Z -->
+  <text x="256" y="330"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="320"
+    font-weight="900"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="url(#goldGrad)"
+    stroke="url(#goldStroke)"
+    stroke-width="4"
+    filter="url(#zGlow)"
+  >Z</text>
+
+  <!-- Flame group — center-bottom of the Z -->
+  <!-- Main flame body -->
+  <path d="M256 460 C230 430 190 390 210 350 C225 320 240 340 242 310 C244 280 228 250 240 220 C250 195 265 210 268 240 C272 270 258 290 264 310 C270 330 290 310 295 280 C300 255 292 230 305 215 C320 195 335 220 330 250 C325 280 308 300 315 330 C322 360 345 340 345 370 C345 410 315 440 290 460 Z" fill="url(#flameGrad)" opacity="0.95" filter="url(#flameShadow)"/>
+  <!-- Inner flame highlight -->
+  <path d="M256 450 C242 425 225 400 238 372 C245 355 252 365 254 348 C256 332 248 315 254 295 C259 278 266 288 268 305 C271 324 262 338 266 355 C270 372 282 358 284 338 C287 320 280 302 289 290 C298 278 308 295 305 318 C302 340 292 353 297 372 C302 392 318 378 318 400 C318 430 295 448 272 458 Z" fill="url(#innerFlame)" opacity="0.8"/>
+  <!-- Flame tip spark -->
+  <ellipse cx="262" cy="218" rx="8" ry="14" fill="#ffffff" opacity="0.9" transform="rotate(-5 262 218)"/>
+
+  <!-- Thin gold Z outline overlay for crispness -->
+  <text x="256" y="330"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="320"
+    font-weight="900"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="none"
+    stroke="#ffec8b"
+    stroke-width="1.5"
+    opacity="0.6"
+  >Z</text>
+
+  <!-- Corner sparkle top-right -->
+  <g transform="translate(400,85)" opacity="0.8">
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-8" y1="-8" x2="8" y2="8" stroke="#ffd700" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+    <line x1="8" y1="-8" x2="-8" y2="8" stroke="#ffd700" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a0800"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffec8b"/>
+      <stop offset="40%" stop-color="#ffd700"/>
+      <stop offset="75%" stop-color="#b8860b"/>
+      <stop offset="100%" stop-color="#8b6000"/>
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="0" y1="0" x2="0" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="fireGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6600" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#ff3300" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flameGrad" x1="256" y1="220" x2="256" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="20%" stop-color="#ffdd00"/>
+      <stop offset="55%" stop-color="#ff6600"/>
+      <stop offset="85%" stop-color="#ff2200"/>
+      <stop offset="100%" stop-color="#cc1100" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="innerFlame" x1="262" y1="218" x2="262" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#ffe566"/>
+      <stop offset="70%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#ff4400" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="zGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix type="matrix" values="1 0.5 0 0 0 0.8 0.4 0 0 0 0 0 0 0 0 0 0 0 1 0" in="blur" result="goldBlur"/>
+      <feMerge>
+        <feMergeNode in="goldBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="flameShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix type="matrix" values="1 0.3 0 0 0.1 0.2 0.1 0 0 0 0 0 0 0 0 0 0 0 0.8 0" in="blur" result="glowBlur"/>
+      <feMerge>
+        <feMergeNode in="glowBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+</svg>
