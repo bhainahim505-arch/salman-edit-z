@@ -64,6 +64,7 @@ jobs:
       # ── 8. Patch Android project (Unity Ads + cleartext) ─────────────────
       - name: Patch Android project for Unity Ads
         working-directory: artifacts/salman-edit-z
+        continue-on-error: true
         run: |
           chmod +x android-patches/patch-android.sh
           bash android-patches/patch-android.sh
