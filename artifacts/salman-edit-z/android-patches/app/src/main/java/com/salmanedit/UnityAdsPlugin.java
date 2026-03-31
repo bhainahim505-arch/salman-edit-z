@@ -1,4 +1,4 @@
-package com.salmanedit;
+package PACKAGE_PLACEHOLDER;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -22,13 +22,11 @@ public class UnityAdsPlugin extends Plugin {
     public void initialize(PluginCall call) {
         String gameId = call.getString("gameId", "6067350");
         boolean testMode = Boolean.TRUE.equals(call.getBoolean("testMode", false));
-
         UnityAds.initialize(getActivity(), gameId, testMode, new IUnityAdsInitializationListener() {
             @Override
             public void onInitializationComplete() {
                 call.resolve();
             }
-
             @Override
             public void onInitializationFailed(UnityAds.UnityAdsInitializationError error, String message) {
                 call.reject("Unity Ads init failed: " + message);
@@ -44,7 +42,6 @@ public class UnityAdsPlugin extends Plugin {
             public void onUnityAdsAdLoaded(String placementId) {
                 call.resolve();
             }
-
             @Override
             public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
                 call.reject("Load failed: " + message);
@@ -60,13 +57,10 @@ public class UnityAdsPlugin extends Plugin {
             public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
                 call.reject("Show failed: " + message);
             }
-
             @Override
             public void onUnityAdsShowStart(String placementId) {}
-
             @Override
             public void onUnityAdsShowClick(String placementId) {}
-
             @Override
             public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
                 JSObject result = new JSObject();
@@ -80,9 +74,10 @@ public class UnityAdsPlugin extends Plugin {
     public void showBanner(PluginCall call) {
         String placementId = call.getString("placementId", "Banner_Android");
         getActivity().runOnUiThread(() -> {
-            bannerView = new BannerView(getActivity(), placementId, UnityBannerSize.getDynamicSize());
+            bannerView = new BannerView(getActivity(), placementId, UnityBannerSize.getDynamicSize(getActivity()));
             bannerView.setListener(new BannerView.IListener() {
                 @Override public void onBannerLoaded(BannerView bannerAdView) {}
+                @Override public void onBannerShown(BannerView bannerAdView) {}
                 @Override public void onBannerClick(BannerView bannerAdView) {}
                 @Override public void onBannerFailedToLoad(BannerView bannerAdView, BannerErrorInfo errorInfo) {}
                 @Override public void onBannerLeftApplication(BannerView bannerAdView) {}
