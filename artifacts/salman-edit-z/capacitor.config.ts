@@ -3,18 +3,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   appId: "com.salmanedit.app",
   appName: "SALMAN EDIT-Z",
-  webDir: "dist",
-  server: {
-    url: "https://card.replit.dev",
-    cleartext: true,
-    allowNavigation: ["*"],
-  },
-  android: {
-    buildOptions: {
-      keystorePath: "salman-editz.keystore",
-      keystoreAlias: "salman-editz",
-    },
-  },
+  webDir: "dist/public",
   plugins: {
     SplashScreen: {
       launchShowDuration: 1500,
